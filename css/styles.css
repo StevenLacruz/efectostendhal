@@ -165,9 +165,71 @@ video {
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 1;
   height: 28%;
   pointer-events: none;
   background: linear-gradient(to top, #000000 0%, rgba(0, 0, 0, 0.28) 42%, transparent 100%);
+}
+
+.showreel__playback {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.showreel__play {
+  width: clamp(52px, 8vw, 64px);
+  height: clamp(52px, 8vw, 64px);
+  opacity: 0;
+  transform: scale(0.92);
+  pointer-events: none;
+  filter: drop-shadow(0 2px 16px rgba(0, 0, 0, 0.45));
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.showreel__frame[data-paused="true"] .showreel__play {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.showreel__sound {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.42);
+  color: var(--color-white);
+  cursor: pointer;
+}
+
+.showreel__sound svg {
+  display: none;
+  width: 22px;
+  height: 22px;
+}
+
+.showreel__frame[data-muted="true"] .showreel__sound-off,
+.showreel__frame:not([data-muted="true"]) .showreel__sound-on {
+  display: block;
+}
+
+.showreel__playback:focus-visible,
+.showreel__sound:focus-visible {
+  outline: 1px solid var(--color-white);
+  outline-offset: 3px;
 }
 
 .logo,
@@ -305,5 +367,9 @@ video {
 
   .showreel__video {
     opacity: 1;
+  }
+
+  .showreel__play {
+    transition: none;
   }
 }
