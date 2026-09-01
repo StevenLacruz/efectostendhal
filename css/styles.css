@@ -218,13 +218,17 @@ video {
   :root {
     --page-pad-x: 16px;
     --page-pad-y: 18px;
-    --heading-size: clamp(1.875rem, 7.4vw, 2.375rem);
+    --heading-size: clamp(2.125rem, 8.6vw, 2.625rem);
     --contact-size: 1.0625rem;
     --phone-size: 0.9375rem;
     --logo-w: clamp(128px, 36vw, 156px);
     --gap-logo: 18px;
     --gap-headline: 12px;
     --gap-showreel: 18px;
+  }
+
+  .page {
+    padding-top: calc(env(safe-area-inset-top, 0px) + 32px);
   }
 
   .showreel {
@@ -263,6 +267,10 @@ video {
     --gap-logo: 10px;
     --gap-headline: 8px;
     --gap-showreel: 12px;
+  }
+
+  .page {
+    padding-top: max(var(--page-pad-y), env(safe-area-inset-top, 0px));
   }
 
   .showreel {
