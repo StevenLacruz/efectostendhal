@@ -216,28 +216,61 @@ video {
 
 @media (max-width: 768px) {
   :root {
-    --page-pad-x: 20px;
-    --page-pad-y: clamp(24px, 5vh, 40px);
-    --heading-size: clamp(1.625rem, 5.6vw, 2rem);
-    --gap-logo: 28px;
-    --gap-headline: 16px;
-    --gap-showreel: 28px;
+    --page-pad-x: 16px;
+    --page-pad-y: 18px;
+    --heading-size: clamp(1.875rem, 7.4vw, 2.375rem);
+    --contact-size: 1.0625rem;
+    --phone-size: 0.9375rem;
+    --logo-w: clamp(128px, 36vw, 156px);
+    --gap-logo: 18px;
+    --gap-headline: 12px;
+    --gap-showreel: 18px;
+  }
+
+  .showreel {
+    width: calc(100% + 2 * var(--page-pad-x));
+    margin-left: calc(-1 * var(--page-pad-x));
+    margin-right: calc(-1 * var(--page-pad-x));
+    margin-bottom: calc(-1 * var(--page-pad-y));
+    align-content: stretch;
+    justify-items: stretch;
   }
 
   .showreel__frame {
-    width: min(1000px, 100cqw, calc(100cqh * 16 / 9));
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    max-width: none;
+    aspect-ratio: auto;
+  }
+
+  .showreel__video {
+    object-position: center 42%;
   }
 }
 
-@media (max-width: 390px) {
+@media (max-width: 768px) and (orientation: landscape) and (max-height: 500px) {
   :root {
-    --page-pad-x: 16px;
-    --heading-size: 1.625rem;
-    --logo-w: 104px;
+    --page-pad-y: 12px;
+    --page-pad-x: 20px;
+    --heading-size: 1.375rem;
+    --logo-w: 96px;
+    --gap-logo: 10px;
+    --gap-headline: 8px;
+    --gap-showreel: 12px;
+  }
+
+  .showreel {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
   }
 
   .showreel__frame {
-    width: min(1000px, 100cqw, calc(100cqh * 16 / 9));
+    width: min(100%, calc(100cqh * 16 / 9));
+    height: min(100%, calc(100cqw * 9 / 16));
+    aspect-ratio: 16 / 9;
   }
 }
 
