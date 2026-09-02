@@ -36,6 +36,8 @@
     timecode.textContent = `${pad(mins)}:${pad(secs)}:${pad(frames)}`;
   };
 
+  let wantsSound = true;
+
   const syncPlaybackUi = () => {
     if (!video || !frame) return;
     const paused = video.paused;
@@ -49,37 +51,16 @@
 
   const syncSoundUi = () => {
     if (!video || !frame) return;
-    const muted = video.muted;
-    frame.setAttribute("data-muted", String(muted));
-    soundBtn?.classList.toggle("is-live", !muted);
-    soundBtn?.setAttribute("aria-pressed", String(!muted));
-    soundBtn?.setAttribute("aria-label", muted ? "Activar sonido" : "Silenciar");
-    if (soundLabel) soundLabel.textContent = muted ? "Audio" : "Sonido activo";
+    frame.setAttribute("data-muted", String(!wantsSound));
+    soundBtn?.classList.toggle("is-live", wantsSound);
+    soundBtn?.setAttribute("aria-pressed", String(wantsSound));
+    soundBtn?.setAttribute("aria-label", wantsSound ? "Silenciar" : "Activar sonido");
+    if (soundLabel) soundLabel.textContent = wantsSound ? "Sonido activo" : "Audio";
   };
 
   const markReady = () => {
     frame?.classList.add("is-ready");
     poster?.setAttribute("aria-hidden", "true");
-  };
-
-  const tryPlay = async () => {
-    if (!video) return;
-    try {
-      await video.play();
-      markReady();
-    } catch {
-      video.muted = true;
-      video.defaultMuted = true;
-      video.setAttribute("muted", "");
-      try {
-        await video.play();
-        markReady();
-      } catch {
-        /* Autoplay bloqueado: el poster permanece visible. */
-      }
-    }
-    syncPlaybackUi();
-    syncSoundUi();
   };
 
   const setMuted = (muted) => {
@@ -94,12 +75,44 @@
     syncSoundUi();
   };
 
+  const tryPlay = async () => {
+    if (!video) return;
+
+    if (wantsSound) {
+      setMuted(false);
+      try {
+        await video.play();
+        markReady();
+        syncPlaybackUi();
+        syncSoundUi();
+        return;
+      } catch {
+        /* El navegador bloquea autoplay con sonido: el vídeo sigue, el audio se abre al primer gesto. */
+      }
+    }
+
+    setMuted(true);
+    try {
+      await video.play();
+      markReady();
+    } catch {
+      /* Autoplay bloqueado: el poster permanece visible. */
+    }
+    syncPlaybackUi();
+    syncSoundUi();
+  };
+
+  const unlockSound = () => {
+    if (!video || !wantsSound || !video.muted) return;
+    setMuted(false);
+    void video.play();
+  };
+
   if (video) {
     video.playsInline = true;
     video.controls = false;
-    video.muted = true;
-    video.defaultMuted = true;
-    video.setAttribute("muted", "");
+    video.volume = 1;
+    setMuted(!wantsSound);
 
     if (video.readyState >= 2) {
       markReady();
@@ -119,6 +132,17 @@
       frame?.classList.remove("is-ready");
     });
 
+    const unlockEvents = ["pointerdown", "keydown", "touchstart"];
+    const onFirstGesture = () => {
+      unlockSound();
+      unlockEvents.forEach((type) => {
+        window.removeEventListener(type, onFirstGesture, true);
+      });
+    };
+    unlockEvents.forEach((type) => {
+      window.addEventListener(type, onFirstGesture, { capture: true });
+    });
+
     syncPlaybackUi();
     syncSoundUi();
     renderTimecode();
@@ -126,12 +150,6 @@
 
   playbackBtn?.addEventListener("click", async () => {
     if (!video) return;
-
-    if (video.muted && !video.paused) {
-      setMuted(false);
-      void video.play();
-      return;
-    }
 
     if (video.paused) {
       try {
@@ -148,8 +166,9 @@
   soundBtn?.addEventListener("click", (event) => {
     event.stopPropagation();
     if (!video) return;
-    setMuted(!video.muted);
-    if (!video.muted) void video.play();
+    wantsSound = !wantsSound;
+    setMuted(!wantsSound);
+    if (wantsSound) void video.play();
   });
 
   if (video && !prefersReducedMotion) {

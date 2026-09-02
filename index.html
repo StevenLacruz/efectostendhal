@@ -21,7 +21,7 @@
       href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css?v=6" />
+    <link rel="stylesheet" href="css/styles.css?v=7" />
   </head>
   <body>
     <div class="grain" aria-hidden="true"></div>
@@ -44,13 +44,13 @@
         <nav class="masthead__nav" aria-label="Navegación principal">
           <button
             type="button"
-            class="audio-toggle"
+            class="audio-toggle is-live"
             data-sound
-            aria-label="Activar sonido"
-            aria-pressed="false"
+            aria-label="Silenciar"
+            aria-pressed="true"
           >
             <span class="audio-toggle__dot" aria-hidden="true"></span>
-            <span class="audio-toggle__label" data-sound-label>Audio</span>
+            <span class="audio-toggle__label" data-sound-label>Sonido activo</span>
             <svg class="audio-toggle__icon audio-toggle__icon--off" viewBox="0 0 24 24" aria-hidden="true">
               <path
                 fill="none"
@@ -96,7 +96,7 @@
       <main class="stage" id="top">
         <div class="stage__frame">
           <section class="showreel" aria-label="Showreel">
-            <div class="showreel__frame" data-muted="true" data-paused="true">
+            <div class="showreel__frame" data-muted="false" data-paused="true">
               <div class="showreel__geometry" aria-hidden="true">
                 <span></span>
                 <span></span>
@@ -114,7 +114,6 @@
                 poster="assets/poster.jpg?v=2"
                 preload="auto"
                 autoplay
-                muted
                 loop
                 playsinline
                 webkit-playsinline
@@ -290,6 +289,6 @@
       </div>
     </div>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js?v=7"></script>
   </body>
 </html>
