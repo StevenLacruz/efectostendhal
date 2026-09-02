@@ -3,83 +3,293 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#0A0A0A" />
     <meta
       name="description"
-      content="El Efecto Stendhal. Estamos diseñando tu próximo evento."
+      content="El Efecto Stendhal. Experiencias y eventos. Algo está a punto de suceder."
     />
-    <meta property="og:title" content="El Efecto Stendhal" />
-    <meta property="og:description" content="Estamos diseñando tu próximo evento." />
+    <meta property="og:title" content="El Efecto Stendhal — Experiencias & Eventos" />
+    <meta property="og:description" content="Algo está a punto de suceder." />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="assets/poster.jpg" />
-    <title>El Efecto Stendhal</title>
+    <title>El Efecto Stendhal — Experiencias & Eventos</title>
     <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
     <link rel="preconnect" href="https://api.fontshare.com" />
     <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
     <link
-      href="https://api.fontshare.com/v2/css?f[]=satoshi@400,700&display=swap"
+      href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/styles.css?v=6" />
   </head>
   <body>
-    <main class="page">
-      <header class="brand">
-        <div class="logo">
-          <img
-            src="assets/logo.png"
-            alt="El Efecto Stendhal"
-            width="128"
-            height="70"
-          />
-        </div>
-        <h1>Estamos diseñando<br />tu próximo evento</h1>
-        <address class="contact">
-          <a href="mailto:eventos@elefectostendhal.com">eventos@elefectostendhal.com</a>
-          <a href="tel:+34633340905">+34 633 34 09 05</a>
-        </address>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+
+    <div class="page">
+      <header class="masthead" role="banner">
+        <a class="brand" href="#top" aria-label="El Efecto Stendhal">
+          <span class="brand__mark">
+            <img
+              src="assets/logo-mark.png"
+              alt="El Efecto Stendhal"
+              width="937"
+              height="542"
+            />
+          </span>
+          <span class="brand__tagline">Eventos &amp; experiencias</span>
+        </a>
+
+        <nav class="masthead__nav" aria-label="Navegación principal">
+          <button
+            type="button"
+            class="audio-toggle"
+            data-sound
+            aria-label="Activar sonido"
+            aria-pressed="false"
+          >
+            <span class="audio-toggle__dot" aria-hidden="true"></span>
+            <span class="audio-toggle__label" data-sound-label>Audio</span>
+            <svg class="audio-toggle__icon audio-toggle__icon--off" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M11 5 6 9H3v6h3l5 4V5Z"
+              />
+              <path
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                d="m22 9-6 6M16 9l6 6"
+              />
+            </svg>
+            <svg class="audio-toggle__icon audio-toggle__icon--on" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M11 5 6 9H3v6h3l5 4V5Z"
+              />
+              <path
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                d="M15.5 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12"
+              />
+            </svg>
+          </button>
+
+          <button type="button" class="contact-link" data-open-contact>
+            Contacto
+          </button>
+        </nav>
       </header>
 
-      <section class="showreel" aria-label="Showreel">
-        <div class="showreel__frame">
-          <video
-            class="showreel__video"
-            poster="assets/poster.jpg"
-            preload="auto"
-            autoplay
-            muted
-            loop
-            playsinline
-            webkit-playsinline
-            disablepictureinpicture
-            controlslist="nodownload nofullscreen noremoteplayback"
-            aria-label="Showreel de El Efecto Stendhal"
-            data-video
-          >
-            <source src="assets/efecto-stendhal.mp4" type="video/mp4" />
-          </video>
-          <div class="showreel__fade" aria-hidden="true"></div>
-          <button type="button" class="showreel__playback" data-playback aria-label="Pausar showreel">
-            <img class="showreel__play" src="assets/play.svg" alt="" width="64" height="64" />
-          </button>
-          <button type="button" class="showreel__sound" data-sound aria-label="Activar sonido" aria-pressed="false">
-            <svg class="showreel__sound-off" viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                fill="currentColor"
-                d="M4.1 9.1v5.8h3.3L13 20V4L7.4 9.1H4.1Zm14.2 8.3-1.3-1.3A5.4 5.4 0 0 0 18.4 12a5.4 5.4 0 0 0-1.4-4.1l1.3-1.3A7.2 7.2 0 0 1 20.2 12a7.2 7.2 0 0 1-1.9 5.4ZM5.3 3.2 20.8 18.7l-1.4 1.4L3.9 4.6 5.3 3.2Z"
+      <main class="stage" id="top">
+        <div class="stage__frame">
+          <section class="showreel" aria-label="Showreel">
+            <div class="showreel__frame" data-muted="true" data-paused="true">
+              <div class="showreel__geometry" aria-hidden="true">
+                <span></span>
+                <span></span>
+              </div>
+
+              <img
+                class="showreel__poster"
+                src="assets/poster.jpg"
+                alt=""
+                data-poster
               />
-            </svg>
-            <svg class="showreel__sound-on" viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                fill="currentColor"
-                d="M4.1 9.1v5.8h3.3L13 20V4L7.4 9.1H4.1Zm12.7 1.2A3.6 3.6 0 0 1 18 12a3.6 3.6 0 0 1-1.2 1.7l-1.2-1.2.4-.5-.4-.5 1.2-1.2Zm2.6-2.6A7.2 7.2 0 0 1 21.3 12a7.2 7.2 0 0 1-1.9 5.3l-1.3-1.3A5.4 5.4 0 0 0 19.5 12a5.4 5.4 0 0 0-1.4-4.1l1.3-1.3Z"
-              />
-            </svg>
-          </button>
+
+              <video
+                class="showreel__video"
+                poster="assets/poster.jpg"
+                preload="auto"
+                autoplay
+                muted
+                loop
+                playsinline
+                webkit-playsinline
+                disablepictureinpicture
+                controlslist="nodownload nofullscreen noremoteplayback"
+                aria-label="Showreel de El Efecto Stendhal"
+                data-video
+              >
+                <source src="assets/efecto-stendhal.mp4" type="video/mp4" />
+              </video>
+
+              <div class="showreel__fade" aria-hidden="true"></div>
+
+              <p class="showreel__emblem" data-emblem aria-hidden="true">
+                <span></span>
+                Teaser Experience
+                <span></span>
+              </p>
+
+              <p class="showreel__timecode" aria-hidden="true">
+                <span class="showreel__rec"></span>
+                <span data-timecode>00:00:00</span> / REC
+              </p>
+
+              <button type="button" class="showreel__playback" data-playback aria-label="Pausar showreel">
+                <img class="showreel__play" src="assets/play.svg" alt="" width="64" height="64" />
+              </button>
+            </div>
+          </section>
+
+          <section class="claim" aria-label="Declaración de marca">
+            <h1>
+              <span>Algo está a punto</span>
+              <span>de suceder.</span>
+            </h1>
+            <p>
+              <span class="claim__rule" aria-hidden="true"></span>
+              Nueva experiencia próximamente
+            </p>
+          </section>
         </div>
-      </section>
-    </main>
+      </main>
+
+      <footer class="colophon" role="contentinfo">
+        <div class="colophon__channels">
+          <div class="channel" data-copy-group>
+            <div class="channel__meta">
+              <span>Email</span>
+              <span class="channel__copied" data-copied hidden>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5" />
+                </svg>
+                Copiado
+              </span>
+              <button
+                type="button"
+                class="channel__copy"
+                data-copy="eventos@elefectostendhal.com"
+                aria-label="Copiar dirección de email"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="9" y="9" width="13" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.7" />
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" fill="none" stroke="currentColor" stroke-width="1.7" />
+                </svg>
+              </button>
+            </div>
+            <a href="mailto:eventos@elefectostendhal.com">
+              eventos@elefectostendhal.com
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M8 7h9v9" />
+              </svg>
+            </a>
+          </div>
+
+          <div class="channel" data-copy-group>
+            <div class="channel__meta">
+              <span>Teléfono</span>
+              <span class="channel__copied" data-copied hidden>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5" />
+                </svg>
+                Copiado
+              </span>
+              <button
+                type="button"
+                class="channel__copy"
+                data-copy="+34633340905"
+                aria-label="Copiar número de teléfono"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="9" y="9" width="13" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.7" />
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" fill="none" stroke="currentColor" stroke-width="1.7" />
+                </svg>
+              </button>
+            </div>
+            <a href="tel:+34633340905">
+              +34 633 34 09 05
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M8 7h9v9" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="colophon__place">
+          <p>Madrid — España</p>
+          <p>© 2026 El Efecto Stendhal</p>
+        </div>
+      </footer>
+    </div>
+
+    <div class="modal" data-modal hidden inert aria-hidden="true">
+      <div class="modal__backdrop" data-close-contact aria-hidden="true"></div>
+      <div
+        class="modal__card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="contact-modal-title"
+        tabindex="-1"
+      >
+        <button type="button" class="modal__close" data-close-contact aria-label="Cerrar ventana de contacto">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" d="M18 6 6 18M6 6l12 12" />
+          </svg>
+        </button>
+
+        <p class="modal__kicker">El Efecto Stendhal</p>
+        <h2 id="contact-modal-title">Hablemos</h2>
+        <p class="modal__lead">
+          Para experiencias a medida, convocatorias privadas o nuevos proyectos,
+          nuestro equipo está a tu disposición.
+        </p>
+
+        <div class="modal__channels">
+          <div class="channel">
+            <span>Email</span>
+            <a href="mailto:eventos@elefectostendhal.com">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.7" />
+                <path d="m3 7 9 6 9-6" fill="none" stroke="currentColor" stroke-width="1.7" />
+              </svg>
+              eventos@elefectostendhal.com
+              <svg class="channel__arrow" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M8 7h9v9" />
+              </svg>
+            </a>
+          </div>
+          <div class="channel">
+            <span>Teléfono</span>
+            <a href="tel:+34633340905">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8.1 9.5a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"
+                />
+              </svg>
+              +34 633 34 09 05
+              <svg class="channel__arrow" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M8 7h9v9" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="modal__foot">
+          <span>Madrid — España</span>
+          <span>© 2026 El Efecto Stendhal</span>
+        </div>
+      </div>
+    </div>
+
     <script src="js/main.js"></script>
   </body>
 </html>
